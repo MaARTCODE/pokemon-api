@@ -1,0 +1,370 @@
+/* Contenedor principal de la tarjeta del Pokémon */
+.pokemon-showcase {
+  /* Fondo cristal semi-transparente */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 30px;
+  padding: 40px;
+  /* Sombras para dar profundidad */
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* Animación de entrada */
+  animation: slideInUp 0.6s ease-out;
+}
+
+/* Animación de aparición desde abajo */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Encabezado con imagen e info básica */
+.showcase-header {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 50px;
+  padding-bottom: 40px;
+  /* Línea separadora */
+  border-bottom: 2px solid #f1f5f9;
+}
+
+/* Contenedor de la imagen del Pokémon */
+.pokemon-portrait {
+  position: relative;
+}
+
+/* Marco de la imagen con efectos */
+.image-frame {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  /* Fondo degradado sutil */
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+  border-radius: 25px;
+  padding: 20px;
+  /* Sombras y brillo interno */
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.1),
+    inset 0 2px 10px rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+}
+
+/* Imagen del Pokémon */
+.pokemon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+/* Efecto de zoom al pasar el mouse */
+.pokemon-img:hover {
+  transform: scale(1.1);
+}
+
+/* Efecto de resplandor detrás de la imagen */
+.image-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  /* Círculo de luz suave */
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  /* Animación de pulso */
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* Animación de pulso para el resplandor */
+@keyframes pulse {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1); 
+    opacity: 0.7; 
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.1); 
+    opacity: 0.3; 
+  }
+}
+
+/* Información básica del Pokémon */
+.pokemon-identity {
+  flex: 1;
+}
+
+/* Nombre del Pokémon */
+.pokemon-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin: 0 0 15px 0;
+  /* Texto con degradado */
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -2px;
+}
+
+/* Especie del Pokémon */
+.pokemon-category {
+  font-size: 1.3rem;
+  color: #64748b;
+  margin: 0 0 25px 0;
+  font-weight: 500;
+}
+
+/* Contenedor de tipos */
+.type-collection {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Etiquetas de tipo con colores específicos */
+.type-tag {
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  /* Sombra y efecto de texto */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+/* Efecto hover en tipos */
+.type-tag:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+/* Contenido detallado */
+.showcase-content {
+  display: grid;
+  gap: 40px;
+}
+
+/* Grid de información (habilidades y movimientos) */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+/* Tarjetas de información */
+.info-card {
+  background: #f8fafc;
+  border-radius: 20px;
+  padding: 30px;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+/* Efecto hover en tarjetas */
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border-color: #667eea;
+}
+
+/* Encabezado de tarjetas */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+/* Iconos de las tarjetas */
+.card-icon {
+  color: #667eea;
+  font-size: 28px;
+}
+
+/* Títulos de las tarjetas */
+.card-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}
+
+/* Listas de habilidades y movimientos */
+.abilities-list,
+.moves-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Items individuales de habilidades y movimientos */
+.ability-item,
+.move-item {
+  background: white;
+  color: #475569;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 500;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+/* Efecto hover en items */
+.ability-item:hover,
+.move-item:hover {
+  background: #667eea;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Sección de estadísticas con fondo especial */
+.stats-showcase {
+  background: linear-gradient(135deg, #fef7cd, #fde68a);
+  border-radius: 20px;
+  padding: 35px;
+  border: 2px solid #f59e0b;
+}
+
+/* Encabezado de estadísticas */
+.stats-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+/* Icono de estadísticas */
+.stats-icon {
+  color: #d97706;
+  font-size: 28px;
+}
+
+/* Título de estadísticas */
+.stats-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #92400e;
+  margin: 0;
+}
+
+/* Contenedor de todas las estadísticas */
+.stats-container {
+  display: grid;
+  gap: 20px;
+}
+
+/* Fila individual de estadística */
+.stat-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Información de la estadística (nombre y valor) */
+.stat-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Nombre de la estadística */
+.stat-label {
+  font-weight: 600;
+  color: #78350f;
+  font-size: 16px;
+}
+
+/* Valor numérico de la estadística */
+.stat-number {
+  background: white;
+  color: #92400e;
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  border: 2px solid #fbbf24;
+  font-size: 15px;
+}
+
+/* Contenedor de la barra de progreso */
+.stat-track {
+  height: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 6px;
+  overflow: hidden;
+  /* Sombra interna */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Barra de progreso que se llena */
+.stat-progress {
+  height: 100%;
+  border-radius: 6px;
+  position: relative;
+  /* Animación suave al cargar */
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Efecto de brillo que se mueve por la barra */
+.progress-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Línea de brillo que se mueve */
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  animation: shine 2s ease-in-out infinite;
+}
+
+/* Animación del brillo */
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* RESPONSIVE - Para tablets */
+@media (max-width: 768px) {
+  .pokemon-showcase {
+    padding: 30px 25px;
+  }
+  
+  .showcase-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 25px;
+  }
+  
+  .image-frame {
+    width: 160px;
+    height: 160px;
+  }
+  
+  .pokemon-title {
+    font-size: 2.8rem;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .type-collection {
+    justify-content: center;
+  }
+}

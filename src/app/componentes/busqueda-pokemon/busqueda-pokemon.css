@@ -1,0 +1,422 @@
+.hero-section {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.background-gradient {
+  display: none;
+}
+
+.floating-shapes {
+  display: none;
+}
+
+.main-container {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.search-wrapper {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(30px);
+  border-radius: 32px;
+  padding: 60px;
+  box-shadow: 
+    0 32px 64px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  margin-bottom: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.search-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.05) 100%);
+  border-radius: 32px;
+  pointer-events: none;
+}
+
+.main-title {
+  text-align: center;
+  margin: 0 0 60px 0;
+  position: relative;
+}
+
+.title-text {
+  display: block;
+  font-size: 5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #fff 0%, #f8fafc 25%, #e2e8f0 50%, #cbd5e1 75%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -3px;
+  margin-bottom: 15px;
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.5);
+  position: relative;
+}
+
+.title-text::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, white, transparent);
+  border-radius: 2px;
+}
+
+.title-subtitle {
+  display: block;
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.search-box {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  align-items: center;
+}
+
+/* Fila horizontal que contiene input y botones */
+.search-row {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+}
+
+/* Contenedor del input que crece para ocupar espacio */
+.input-container {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+/* Input de búsqueda */
+.main-input {
+  width: 100%;
+  height: 70px;
+  padding: 0 85px 0 30px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 35px;
+  font-size: 18px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 
+    inset 0 2px 10px rgba(0, 0, 0, 0.1),
+    0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.main-input:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    inset 0 2px 10px rgba(0, 0, 0, 0.1),
+    0 4px 20px rgba(0, 0, 0, 0.15),
+    0 0 0 3px rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.main-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 400;
+}
+
+/* Botón de búsqueda dentro del input */
+.search-button {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 8px 20px rgba(59, 130, 246, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+}
+
+.search-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.search-button:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.search-button:hover:not(:disabled) {
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 
+    0 12px 25px rgba(59, 130, 246, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.search-button:active {
+  transform: translateY(-50%) scale(1.02);
+}
+
+.search-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: translateY(-50%);
+}
+
+.search-icon {
+  font-size: 24px;
+}
+
+.loading-spinner {
+  color: white;
+}
+
+/* Botón de limpiar alineado horizontalmente */
+.clear-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 70px;
+  padding: 0 25px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 35px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.clear-button:hover {
+  border-color: rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.2);
+}
+
+.clear-button mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.suggestions-section {
+  margin-top: 50px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.suggestions-title {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  margin: 0 0 25px 0;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.suggestions-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.suggestion-pill {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 24px;
+  border-radius: 30px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.suggestion-pill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.suggestion-pill:hover::before {
+  left: 100%;
+}
+
+.suggestion-pill:hover {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(59, 130, 246, 0.2);
+}
+
+.error-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: rgba(239, 68, 68, 0.1);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(239, 68, 68, 0.2);
+  border-radius: 25px;
+  padding: 25px;
+  margin-top: 40px;
+  box-shadow: 0 12px 24px rgba(239, 68, 68, 0.1);
+}
+
+.error-icon {
+  color: #fca5a5;
+  font-size: 32px;
+}
+
+.error-content h4 {
+  margin: 0 0 8px 0;
+  color: #fecaca;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.error-content p {
+  margin: 0;
+  color: rgba(254, 202, 202, 0.8);
+  font-weight: 500;
+}
+
+/* Responsive para tablets */
+@media (max-width: 968px) {
+  .search-row {
+    max-width: 600px;
+    gap: 15px;
+  }
+  
+  .main-input {
+    height: 65px;
+    font-size: 16px;
+    padding: 0 75px 0 25px;
+  }
+  
+  .search-button {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .clear-button {
+    height: 65px;
+    padding: 0 20px;
+    font-size: 15px;
+  }
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 30px 15px;
+  }
+  
+  .search-wrapper {
+    padding: 40px 25px;
+    border-radius: 28px;
+  }
+  
+  .title-text {
+    font-size: 3.5rem;
+    letter-spacing: -2px;
+  }
+  
+  .title-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .search-row {
+    flex-direction: column;
+    gap: 20px;
+    max-width: 100%;
+  }
+  
+  .input-container {
+    width: 100%;
+  }
+  
+  .clear-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-wrapper {
+    padding: 30px 20px;
+  }
+  
+  .title-text {
+    font-size: 2.8rem;
+  }
+  
+  .main-input {
+    height: 60px;
+    font-size: 16px;
+  }
+  
+  .search-button {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .clear-button {
+    height: 60px;
+  }
+}

@@ -1,0 +1,68 @@
+<div class="hero-section">
+  <div class="main-container">
+    <div class="search-wrapper">
+      <h1 class="main-title">
+        <span class="title-text">Pokédex</span>
+        <span class="title-subtitle"> Prueba Técnica Teknei</span>
+      </h1>
+      
+      <div class="search-box">
+        <!-- Contenedor horizontal para input y botones -->
+        <div class="search-row">
+          <!-- Contenedor del input y botón de bsqueda -->
+          <div class="input-container">
+            <input 
+              type="text"
+              [(ngModel)]="nombrePokemon"
+              (keyup.enter)="buscarPokemon()"
+              placeholder="Ingresa el nombre de un Pokémon..."
+              class="main-input"
+              [disabled]="cargando">
+            
+            <button 
+              (click)="buscarPokemon()"
+              [disabled]="cargando || !nombrePokemon.trim()"
+              class="search-button">
+              <mat-icon *ngIf="!cargando" class="search-icon">search</mat-icon>
+              <mat-spinner *ngIf="cargando" diameter="24" class="loading-spinner"></mat-spinner>
+            </button>
+          </div>
+          
+          <!-- Boton de limpiar alineado-->
+          <button 
+            *ngIf="nombrePokemon || pokemon"
+            (click)="limpiarBusqueda()"
+            class="clear-button">
+            <mat-icon>refresh</mat-icon>
+            <span>Nuevo</span>
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="busquedasRecientes.length > 0" class="suggestions-section">
+        <p class="suggestions-title">Búsquedas recientes</p>
+        <div class="suggestions-grid">
+          <button 
+            *ngFor="let busqueda of busquedasRecientes" 
+            (click)="buscarPokemonReciente(busqueda)"
+            class="suggestion-pill">
+            {{busqueda}}
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="error" class="error-card">
+        <mat-icon class="error-icon">error_outline</mat-icon>
+        <div class="error-content">
+          <h4>¡Ups! Algo salió mal</h4>
+          <p>{{error}}</p>
+        </div>
+      </div>
+    </div>
+
+    <app-tarjeta-pokemon 
+      *ngIf="pokemon && !cargando" 
+      [pokemon]="pokemon">
+    </app-tarjeta-pokemon>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+/* Estilos globales de la aplicación */
+
+/* Importar el tema de Angular Material */
+@import '@angular/material/prebuilt-themes/azure-blue.css';
+
+/* Reset básico */
+html, body { 
+  height: 100%; 
+  margin: 0;
+  padding: 0;
+}
+
+/* Fuente principal de la aplicación */
+body { 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Box model consistente para todos los elementos */
+* {
+  box-sizing: border-box;
+}
+
+/* Mejorar la experiencia de scroll en móviles */
+html {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Quitar outline en elementos enfocados (accesibilidad manejada por Material) */
+button:focus,
+input:focus {
+  outline: none;
+}
+
+/* Hacer que las imágenes sean responsivas por defecto */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Estilos para elementos de carga */
+.mat-mdc-progress-spinner {
+  --mdc-circular-progress-active-indicator-color: currentColor;
+}
+
+/* Personalización de scrollbar para navegadores webkit */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Animación global para elementos que aparecen */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Utilidades responsive */
+.mobile-only {
+  display: none;
+}
+
+.desktop-only {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .mobile-only {
+    display: block;
+  }
+  
+  .desktop-only {
+    display: none;
+  }
+}

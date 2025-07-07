@@ -1,0 +1,54 @@
+/* Contenedor principal de toda la aplicación */
+.aplicacion-contenedor {
+  /* Altura mínima de toda la pantalla */
+  min-height: 100vh;
+  /* Fondo con degradado de colores oscuros elegantes */
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
+  /* Sin márgenes ni padding para ocupar toda la pantalla */
+  margin: 0;
+  padding: 0;
+  /* Para posicionar elementos encima */
+  position: relative;
+  /* Evita scroll horizontal */
+  overflow-x: hidden;
+}
+
+/* Efectos de fondo con círculos de luz */
+.aplicacion-contenedor::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Círculos de colores suaves para ambiente */
+  background: 
+    radial-gradient(ellipse at top left, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at top right, rgba(255, 111, 97, 0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at center right, rgba(17, 153, 142, 0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at center left, rgba(56, 103, 214, 0.3) 0%, transparent 50%);
+}
+
+/* Estrellitas que brillan */
+.aplicacion-contenedor::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Puntos blancos pequeños como estrellas */
+  background-image: 
+    radial-gradient(circle at 25% 25%, white 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, white 1px, transparent 1px);
+  background-size: 100px 100px, 150px 150px;
+  opacity: 0.1;
+  /* Animación suave de brillo */
+  animation: twinkle 20s ease-in-out infinite alternate;
+}
+
+/* Animación de las estrellitas */
+@keyframes twinkle {
+  0% { opacity: 0.1; }
+  100% { opacity: 0.3; }
+}

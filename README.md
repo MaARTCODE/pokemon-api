@@ -1,4 +1,4 @@
-# Prueba Técnica: POKEDEX - BUSCADOR DE POKEMON
+# Prueba Técnica SOLO FRONTEND: POKEDEX - BUSCADOR DE POKEMON
 
 Una aplicación web moderna desarrollada en Angular que permite buscar y explorar información detallada sobre Pokémon utilizando la PokéAPI.
 
